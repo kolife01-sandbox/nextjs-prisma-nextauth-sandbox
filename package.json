@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "migrate:deploy": "prisma migrate deploy --preview-feature",
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm-run-all migrate:deploy build-app",
+    "build-app": "next build",
     "start": "next start"
   },
   "dependencies": {
@@ -19,6 +21,8 @@
     "@prisma/cli": "^2.13.1",
     "@types/node": "^14.14.16",
     "@types/react": "^17.0.0",
-    "typescript": "^4.1.3"
+    "npm-run-all": "^4.1.5",
+    "typescript": "^4.1.3",
+    "vercel": "^21.0.1"
   }
 }
